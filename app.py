@@ -13,6 +13,8 @@ from fastapi.staticfiles import StaticFiles
 app = FastAPI()
 app.mount("/", StaticFiles(directory="build", html=True), name="static")
 
+app = FastAPI()
+
 model = joblib.load('decision_tree.pkl')
 le_ingredients = joblib.load('le_ingredients.pkl')
 le_flavor = joblib.load('le_flavor.pkl')
