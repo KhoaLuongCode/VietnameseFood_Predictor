@@ -9,11 +9,10 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from graphviz import Digraph, Source
 from fastapi.staticfiles import StaticFiles
+from starlette.responses import RedirectResponse
 
 app = FastAPI()
-app.mount("/", StaticFiles(directory="build", html=True), name="static")
 
-app = FastAPI()
 
 model = joblib.load('decision_tree.pkl')
 le_ingredients = joblib.load('le_ingredients.pkl')
@@ -37,8 +36,11 @@ class Item(BaseModel):
 
 # test
 @app.get('/')
-def index():
-    return {"message": "Hello World"}
+async def index():
+    return RedirectResponse(url='build/index.html')
+
+
+app.mount("/", StaticFiles(directory="build", html=True), name="static")
 
 
 @app.post('/predict')
