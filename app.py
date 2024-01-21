@@ -8,8 +8,10 @@ from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from graphviz import Digraph, Source
+from fastapi.staticfiles import StaticFiles
 
 app = FastAPI()
+app.mount("/", StaticFiles(directory="build", html=True), name="static")
 
 model = joblib.load('decision_tree.pkl')
 le_ingredients = joblib.load('le_ingredients.pkl')
