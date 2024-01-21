@@ -13,7 +13,6 @@ from starlette.responses import RedirectResponse
 
 app = FastAPI()
 
-
 model = joblib.load('decision_tree.pkl')
 le_ingredients = joblib.load('le_ingredients.pkl')
 le_flavor = joblib.load('le_flavor.pkl')
@@ -34,13 +33,13 @@ class Item(BaseModel):
     Vegetarian: str
 
 
+app.mount("/", StaticFiles(directory="build", html=True), name="static")
+
+
 # test
 @app.get('/')
 async def index():
     return RedirectResponse(url='build/index.html')
-
-
-app.mount("/", StaticFiles(directory="build", html=True), name="static")
 
 
 @app.post('/predict')
