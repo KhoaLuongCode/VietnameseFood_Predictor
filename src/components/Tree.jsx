@@ -6,7 +6,7 @@ function TreeVisualization() {
     const [buttonClicked, setButtonClicked] = useState(false);
 
     const fetchTreeImage = () => {
-        setTreeImage('http://127.0.0.1:8000/tree-image');
+        setTreeImage(`${process.env.REACT_APP_API_URL}/tree-image`);
     };
 
     useEffect(() => {
