@@ -1,0 +1,27 @@
+Class,MainIngredient,Flavor,DishType,MealTime,Spicy,Vegetarian
+Pho,Beef,Savory,Noodles,Any,No,No
+Banh My,Various,Savory,Sandwich,Any,No,Optional
+Goi Cuon,Seafood,Fresh,Roll,Any,No,Optional
+Bun Rieu,Seafood,Savory/Sour,Soup,Any,No,No
+Banh Xeo,Various,Savory,Crepes,Any,No,Optional
+Ca Phe Sua Da,Coffee,Sweet,Drink,Any,No,Yes
+Bun Bo Hue,Beef,Spicy/Savory,Soup,Lunch,Yes,No
+Cha Gio,Pork,Savory,Roll,Any,No,No
+My Quang,Seafood,Savory,Noodles,Any,No,No
+Banh Cuon,Pork,Savory,Crepes,Any,No,No
+Com Tam ,Pork,Savory,Rice Dish,Dinner,No,No
+Bun Thit Nuong,Pork,Savory,Noodles,Any,No,No
+Che,Various,Sweet,Dessert,Any,No,Yes
+Banh Bao,Pork,Savory,Dumpling,Breakfast,No,No
+Hu tieu,Seafood/Pork,Savory,Noodles,Any,No,Optional
+Banh Canh,Seafood,Savory,Noodles,Any,No,No
+Banh Tom ,Shrimp,Savory,Fritter,Any,No,No
+Lau Viet Nam,Various,Savory,Hot Pot,Dinner,No,Optional
+Nem Nuong,Pork,Savory,Grilled,Any,No,No
+Banh Beo,Shrimp,Savory,Pancakes,Any,No,No
+Bun Cha,Pork,Savory/Sweet,Noodles,Lunch,No,No
+Bun Bo Nam Bo,Beef,Savory/Sweet,Noodles,Dinner,No,No
+Hu Tieu Nam Vang,Seafood,Savory,Noodles,Lunch,No,No
+Goi Xoai,Mango,Sweet/Sour,Salad,Any,No,Yes
+Banh Trang Tron,Various,Savory,Snack,Any,Yes,Optional
+Bun Moc,Pork,Savory,Noodles,Lunch,No,No
