@@ -33,7 +33,7 @@ class Item(BaseModel):
     Vegetarian: str
 
 
-app.mount("/", StaticFiles(directory="static/", html=True), name="static")
+app.mount("/", StaticFiles(directory="my-app/build", html=True), name="static")
 
 
 
