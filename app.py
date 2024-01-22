@@ -33,13 +33,9 @@ class Item(BaseModel):
     Vegetarian: str
 
 
-app.mount("/", StaticFiles(directory="build"), name="static")
+app.mount("/", StaticFiles(directory="static/", html=True), name="static")
 
 
-# test
-@app.get('/')
-async def index():
-    return RedirectResponse(url='/index.html')
 
 
 
