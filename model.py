@@ -97,15 +97,15 @@ print(f"Training Accuracy: {model.score(inputs_n, target)}")
 
 # In[ ]:
 
-plt.figure(figsize=(30, 20))  # Set the size of the figure
+plt.figure(figsize=(30, 20))
 
 tree.plot_tree(model,
-               feature_names=inputs_n.columns,  # Names of the features
-               class_names=target.unique(),  # Names of the classes
-               filled=True,  # Color nodes by class
-               rounded=True,  # Round the corners of the nodes
-               impurity=False,  # Do not display impurity
-               label='none')  # Do not display labels (like 'gini')
+               feature_names=inputs_n.columns,
+               class_names=target.unique(),
+               filled=True,
+               rounded=True,
+               impurity=False,
+               label='none')
 
 plt.title("Vietnamese Food Tree Visualization")
 plt.savefig('vietnamese_food_tree.png')

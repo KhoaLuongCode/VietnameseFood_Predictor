@@ -1,15 +1,15 @@
 import os.path
 
 import uvicorn
-from fastapi import FastAPI, HTTPException, Path
+from fastapi import FastAPI, HTTPException, Request
 import joblib
 import pandas as pd
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
-from graphviz import Digraph, Source
+from graphviz import Digraph
 from fastapi.staticfiles import StaticFiles
-from starlette.responses import RedirectResponse
+from starlette.responses import HTMLResponse
+from starlette.templating import Jinja2Templates
 
 app = FastAPI()
 
@@ -33,19 +33,22 @@ class Item(BaseModel):
     Vegetarian: str
 
 
-app.mount("/", StaticFiles(directory="my-app/build", html=True), name="static")
+app.mount("/static", StaticFiles(directory="static"), "static")
+templates = Jinja2Templates(directory="templates")
 
 
-
+@app.get("/", response_class=HTMLResponse)
+async def home(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 
 @app.post('/predict')
 def predict(item: Item):
     try:
-        # Convert the Pydantic model to a dictionary
+
         item_data = item.dict()
 
-        # Create a DataFrame from the request data
+
         input_data = pd.DataFrame([item_data])
         input_data['ingredients_n'] = le_ingredients.transform(input_data['MainIngredient'])
         input_data['flavor_n'] = le_flavor.transform(input_data['Flavor'])
@@ -62,15 +65,10 @@ def predict(item: Item):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@app.get("/tree-image")
-def get_tree_image():
-    return FileResponse('vietnamese_food_tree.png')
-
-
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Allows all origins
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],  # Allows all methods
-    allow_headers=["*"],  # Allows all headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
